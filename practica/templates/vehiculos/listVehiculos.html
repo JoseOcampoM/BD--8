@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1 class="pull-right">
+    <div class="row">
+        <div class="col-4">
+            <h3>Listado de Vehiculos</h3>
+        </div>
+
+        <div class="col-4">
+
+        </div>
+
+        <div class="col-4">
+            <a href="{% url 'vehiculos:vehiculoCreate' %}" class="btn btn-primary pull-right" style="margin-top: -10px; margin-bottom: 5px;">Adicionar</a>
+        </div>
+    </div>
+    
+</h1>
+
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Color</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Motor</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Tipo Vehiculo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if vehiculos %}
+        {% for vehiculo in vehiculos %}
+            <tr>
+                <td>{{ vehiculo.id }}</td>
+                <td>{{ vehiculo.modelo }}</td>
+                <td>{{ vehiculo.color }}</td>
+                <td>{{ vehiculo.placa }}</td>
+                <td>{{ vehiculo.motor }}</td>
+                <td>{{ vehiculo.marca }}</td>
+                <td>{{ vehiculo.tipovehiculo }}</td>
+            </tr>
+        {% endfor %}
+      {% else %}
+          <h3>No existen registro</h3>
+       {% endif %}
+    </tbody>
+  </table>
+
+{% endblock %}
